@@ -11,6 +11,7 @@ import java.util.Map;
 public class App {
     
     private static final Gson gson = new Gson();
+    private static final long startTime = System.currentTimeMillis();
     
     public static void main(String[] args) {
         // Set the port (default 4567)
@@ -119,7 +120,6 @@ public class App {
             response.header("Access-Control-Allow-Origin", origin);
             response.header("Access-Control-Request-Method", methods);
             response.header("Access-Control-Allow-Headers", headers);
-            response.type("application/json");
         });
     }
     
@@ -137,8 +137,6 @@ public class App {
     /**
      * Get application uptime in seconds
      */
-    private static long startTime = System.currentTimeMillis();
-    
     private static long getUptime() {
         return (System.currentTimeMillis() - startTime) / 1000;
     }
